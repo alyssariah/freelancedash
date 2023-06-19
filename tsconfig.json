@@ -35,7 +35,8 @@
     ".next/types/**/*.ts",
     "src/context/managed-ui.jsx",
     "src/lib/auth.js",
-    "src/pages/api/auth/[...nextauth].js"
+    "src/pages/api/auth/[...nextauth].js",
+    "src/lib/mongodb.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -5,7 +5,6 @@ import { SidebarUI } from '@components/sidebar/Sidebar';
 import Navbar from '@components/navbar/Navbar';
 import { Metadata } from 'next';
 import { Footer } from '@components/footer/Footer';
-import { getPages } from '@sanity/sanity-utils';
 import { NextAuthProvider } from '../provider';
 
 export const metadata: Metadata = {
@@ -79,12 +78,6 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const pages = await getPages();
-  // NOTE: Links for dynamic pages
-  // const links = pages.map((page) => {
-  //   return { label: page.title, url: page.slug };
-  // });
-
   const links = [
     {
       label: 'About',

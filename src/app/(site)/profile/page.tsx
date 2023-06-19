@@ -2,7 +2,6 @@
 import { Button } from '@/components/button/Button';
 
 import { signIn, signOut } from 'next-auth/react';
-import { signUp } from 'next-auth-sanity/client';
 import { useSession } from 'next-auth/react';
 
 export default function Login() {
