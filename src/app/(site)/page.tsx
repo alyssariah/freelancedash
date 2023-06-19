@@ -18,7 +18,7 @@ export default async function Home() {
         <div className="bg-white-600 mx-4 p-8 sm:p-12 md:p-20 min-h-[75vh] rounded-lg flex flex-col lg:flex-row justify-between items-center">
           <div className="max-w-[500px]">
             <p>Public Template</p>
-            <h1 className="text-6xl font-bold">Nextjs with Prisma and MongoDB</h1>
+            <h1 className="text-6xl font-bold">Nextjs with Prisma and Postgres</h1>
             <p className="mt-4 mb-8">Template setup for Nextjs with Prisma and MongoDB</p>
             <Button label="Open Modal" configuration="outlined" size="large" modal={true} />
           </div>

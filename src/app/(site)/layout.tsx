@@ -48,6 +48,10 @@ export const metadata: Metadata = {
     },
   },
   metadataBase: new URL('https://next-sanity-template-sigma.vercel.app/'),
+  icons: {
+    icon: '../favicon.ico',
+    shortcut: '../favicon.ico',
+  },
   // icons: {
   //   icon: '/next.svg',
   //   shortcut: '/next.svg',
