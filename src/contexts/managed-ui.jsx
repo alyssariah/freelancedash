@@ -5,7 +5,7 @@ import React, { useCallback, useMemo } from 'react';
 const initialState = {
   displaySidebar: false,
   displayModal: false,
-  displayHamburger: false,
+  displayHamburger: true,
   modalView: 'DEFAULT',
   sidebarView: 'DEFAULT',
   setModalView: (value) => {

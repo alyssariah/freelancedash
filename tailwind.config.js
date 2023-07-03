@@ -60,7 +60,7 @@ module.exports = {
         'dialog-bg': 'rgba(0, 0, 0, .3)',
       },
       fontFamily: {
-        sans: ['Source Sans Pro', 'sans-serif'],
+        sans: ['Source Sans Pro', 'monospace'],
         serif: ['Merriweather', 'serif'],
       },
       fontSize: {

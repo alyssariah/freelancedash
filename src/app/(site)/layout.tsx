@@ -6,6 +6,9 @@ import Navbar from '@components/navbar/Navbar';
 import { Metadata } from 'next';
 import { Footer } from '@components/footer/Footer';
 import { NextAuthProvider } from '../provider';
+import Drawer from '@/components/drawer/Drawer';
+import { BsCalendar2Check, BsFileTextFill, BsPeopleFill, BsSpeedometer } from 'react-icons/bs';
+import { FaFileInvoiceDollar } from 'react-icons/fa';
 
 export const metadata: Metadata = {
   title: {
@@ -84,23 +87,38 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const links = [
     {
-      label: 'About',
-      url: '/about',
+      icon: <BsSpeedometer />,
+      label: 'Analytics',
+      url: '/',
     },
     {
-      label: 'Contact',
-      url: '/contact',
+      icon: <BsCalendar2Check />,
+      label: 'Projects',
+      url: '/projects',
     },
     {
-      label: 'Blog',
-      url: '/blog',
+      icon: <FaFileInvoiceDollar />,
+      label: 'Invoices',
+      url: '/invoices',
+    },
+    {
+      icon: <BsFileTextFill />,
+      label: 'Contracts',
+      url: '/contracts',
+    },
+    {
+      icon: <BsPeopleFill />,
+      label: 'Clients',
+      url: '/clients',
     },
   ];
+
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className="flex">
         <NextAuthProvider>
           <ManagedUIContext>
+            <Drawer links={links} />
             <main className="flex flex-col items-center w-[100%] bg-white-500 text-black-500 relative overscroll-none">
               <Navbar
                 links={links}
@@ -112,7 +130,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 }}
               />
               {children}
-              <Footer />
+              {/* <Footer /> */}
+              <footer className="w-[100%] p-4 flex justify-center">
+                &copy; Alyssa Jackson 2023
+              </footer>
               <ModalUI />
               <SidebarUI />
             </main>
