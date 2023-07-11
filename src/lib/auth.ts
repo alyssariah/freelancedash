@@ -11,11 +11,10 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // the session will last 30 days
   },
+  pages: {
+    signIn: '/login',
+  },
   providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_ID ?? '',
-      clientSecret: process.env.GITHUB_SECRET ?? '',
-    }),
     EmailProvider({
       server: {
         host: process.env.SMTP_HOST,
@@ -54,15 +53,16 @@ export const authOptions: NextAuthOptions = {
         }
 
         return {
-          // @ts-ignore
           id: user.id.toString(),
-          // @ts-ignore
           email: user.email,
-          // @ts-ignore
           name: user.name,
           randomKey: 'Hey cool',
         };
       },
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID ?? '',
+      clientSecret: process.env.GITHUB_SECRET ?? '',
     }),
   ],
   adapter: PrismaAdapter(prisma),

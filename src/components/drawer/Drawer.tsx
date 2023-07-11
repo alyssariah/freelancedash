@@ -9,7 +9,7 @@ import { BsBell, BsCart, BsList, BsMenuUp, BsPerson, BsSearch } from 'react-icon
 import { MdDirectionsRun } from 'react-icons/md';
 import { useUI } from '@/contexts/managed-ui';
 import { Button } from '../button/Button';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 export interface DrawerProps {
   links: Array<{
@@ -20,9 +20,8 @@ export interface DrawerProps {
 }
 
 export default function Drawer({ links }: DrawerProps) {
-  const [location, setLocation] = useState(window.location.pathname);
-  // TODO: fix routing
-  // const router = useRouter();
+  const pathname = usePathname();
+
   const { displayHamburger, openHamburger, closeHamburger, openModal } = useUI();
 
   useEffect(() => {}, [links]);
@@ -54,8 +53,8 @@ export default function Drawer({ links }: DrawerProps) {
                 className={clsx(
                   'w-[100%] flex items-center px-4 h-[100%] transition ease-in duration-200',
                   {
-                    ['bg-blue-50 text-blue-700']: link.url === location,
-                    ['border-r-[2px] border-r-blue-500']: link.url === location && displayHamburger,
+                    ['bg-blue-50 text-blue-700']: link.url === pathname,
+                    ['border-r-[2px] border-r-blue-500']: link.url === pathname && displayHamburger,
                   }
                 )}
               >

@@ -8,7 +8,8 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { BsBell, BsCart, BsList, BsMenuUp, BsPerson, BsSearch } from 'react-icons/bs';
 import { useUI } from '@/contexts/managed-ui';
 import { Button } from '../button/Button';
-import Drawer from '../drawer/Drawer';
+import { signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 export interface NavbarProps {
   logo?: {
@@ -41,6 +42,8 @@ export default function Navbar({
   darkmode = false,
   format = 'Right links',
 }: NavbarProps) {
+  const { data: session, status } = useSession();
+  const loading = status === 'loading';
   const ref = useRef<null | HTMLDivElement>(null);
   const { displayHamburger, openHamburger, closeHamburger, openModal } = useUI();
 
@@ -76,9 +79,12 @@ export default function Navbar({
           <Link href="/" title="notifications">
             <BsBell className="text-xl" onClick={openModal} />
           </Link>
-          <Link href="/" title="profile">
-            <BsPerson className="text-xl" />
-          </Link>
+          {!loading && !session && <Button label="Login" onClick={() => signIn()} />}
+          {!loading && session && (
+            <Link href="/profile" title="profile">
+              <BsPerson className="text-xl" />
+            </Link>
+          )}
         </span>
       </nav>
     </header>
