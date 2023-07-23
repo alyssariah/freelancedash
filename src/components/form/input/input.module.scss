@@ -1,0 +1,38 @@
+.outline-input {
+  &::placeholder {
+    opacity: 0;
+  }
+
+  // &:focus-within {
+  //   border: 0.5px solid silver;
+  // }
+}
+
+.filled-input {
+  &::placeholder {
+    opacity: 0;
+  }
+
+  &:not(:placeholder-shown) {
+  }
+
+  &:focus-within {
+    border-bottom: 1px solid grey;
+  }
+}
+
+.filled-label:focus-within > span,
+.filled-input:not(:placeholder-shown) + span {
+  transform: translateY(24px);
+  background-color: transparent;
+  color: var(--primary);
+  font-size: 10px;
+}
+
+.outline-label:focus-within > span,
+.outline-input:not(:placeholder-shown) + span {
+  transform: translateY(11px);
+  background-color: #ffffff;
+  color: var(--primary);
+  font-size: 12px;
+}
