@@ -3,6 +3,7 @@ import GithubProvider from 'next-auth/providers/github';
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import EmailProvider from 'next-auth/providers/email';
+import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compare } from 'bcryptjs';
 
@@ -26,40 +27,44 @@ export const authOptions: NextAuthOptions = {
       },
       from: process.env.SMTP_FROM,
     }),
-    CredentialsProvider({
-      name: 'Sign in',
-      credentials: {
-        email: {
-          label: 'Email',
-          type: 'email',
-          placeholder: 'example@example.com',
-        },
-        password: { label: 'Password', type: 'password' },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) {
-          return null;
-        }
-
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
-        });
-
-        // @ts-ignore
-        if (!user || !(await compare(credentials.password, user.password))) {
-          return null;
-        }
-
-        return {
-          id: user.id.toString(),
-          email: user.email,
-          name: user.name,
-          randomKey: 'Hey cool',
-        };
-      },
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID ?? '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
     }),
+    // CredentialsProvider({
+    //   name: 'Sign in',
+    //   credentials: {
+    //     email: {
+    //       label: 'Email',
+    //       type: 'email',
+    //       placeholder: 'example@example.com',
+    //     },
+    //     password: { label: 'Password', type: 'password' },
+    //   },
+    //   async authorize(credentials) {
+    //     if (!credentials?.email || !credentials.password) {
+    //       return null;
+    //     }
+
+    //     const user = await prisma.user.findUnique({
+    //       where: {
+    //         email: credentials.email,
+    //       },
+    //     });
+
+    //     // @ts-ignore
+    //     if (!user || !(await compare(credentials.password, user.password))) {
+    //       return null;
+    //     }
+
+    //     return {
+    //       id: user.id.toString(),
+    //       email: user.email,
+    //       name: user.name,
+    //       randomKey: 'Hey cool',
+    //     };
+    //   },
+    // }),
     GithubProvider({
       clientId: process.env.GITHUB_ID ?? '',
       clientSecret: process.env.GITHUB_SECRET ?? '',
