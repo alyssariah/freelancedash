@@ -9,8 +9,9 @@
 
   .line {
     fill: none;
-    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-    stroke: var(--grey-50);
+    transition:
+      stroke-dasharray 400ms,
+      stroke-dashoffset 400ms;
     stroke-width: 3;
     stroke-linecap: round;
   }
@@ -139,7 +140,9 @@
 .sb-ham8 .bottom {
   stroke-dasharray: 40 85;
   transform-origin: 50%;
-  transition: transform 400ms, stroke-dashoffset 400ms;
+  transition:
+    transform 400ms,
+    stroke-dashoffset 400ms;
 }
 .sb-ham8.active .top {
   stroke-dashoffset: -64px;

@@ -119,7 +119,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <NextAuthProvider>
           <ManagedUIContext>
             <Drawer links={links} />
-            <main className="flex flex-col items-center w-[100%] bg-white-500 text-black-500 relative overscroll-none">
+            <main className="flex flex-col items-center w-[100%] dark:bg-black-500 dark:text-white-500 bg-white-500 text-black-500 relative overscroll-none">
               <Navbar
                 links={links}
                 format="Center links"
@@ -129,11 +129,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   alt: 'NextGen WebWorks Logo',
                 }}
               />
-              {children}
-              {/* <Footer /> */}
-              <footer className="w-[100%] p-4 flex justify-center">
-                &copy; Alyssa Jackson 2023
-              </footer>
+              <div className="w-[100%] flex flex-col items-center bg-gray-50 text-black-500 dark:bg-black-700 dark:text-black-100">
+                {children}
+                {/* <Footer /> */}
+                <footer className="w-[100%] p-4 flex justify-center">
+                  &copy; Alyssa Jackson 2023
+                </footer>
+              </div>
               <ModalUI />
               <SidebarUI />
             </main>

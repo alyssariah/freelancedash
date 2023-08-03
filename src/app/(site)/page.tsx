@@ -13,56 +13,10 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
 
   return (
-    <div className="w-[100%] flex flex-col items-center">
-      <div className="max-w-[1440px] w-[100%] min-h-[calc(100vh-60px)] my-8">
-        <div className="bg-white-600 mx-4 p-8 sm:p-12 md:p-20 min-h-[75vh] rounded-lg flex flex-col lg:flex-row justify-between items-center">
-          <div className="max-w-[500px]">
-            <p>Public Template</p>
-            <h1 className="text-6xl font-bold">Nextjs with Prisma and Postgres</h1>
-            <p className="mt-4 mb-8">Template setup for Nextjs with Prisma and MongoDB</p>
-            <Button label="Open Modal" configuration="outlined" size="large" modal={true} />
-          </div>
-          <div>
-            <div className="max-w-[500px]">
-              <LottieComp animationData={animationData} />
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center w-[100%] py-24 sm:py-12">
-          <h2 className="text-3xl font-bold mb-4">News & Updates</h2>
-          <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4">
-            {/* {homeContent?.selectBlogPosts?.blogPosts?.map((post: BlogPost) => {
-              return (
-                <Link
-                  href={'/blog/' + post.slug}
-                  key={post._id}
-                  className="flex flex-col items-center justify-center"
-                >
-                  {post.image && (
-                    <div className="h-[320px] w-[320px] border border-black-50 rounded-lg shadow-4 overflow-hidden relative">
-                      <Image
-                        src={post.image}
-                        alt={post.name}
-                        fill
-                        className="object-cover h-[100%] border-gray-500"
-                      />
-                    </div>
-                  )}
-                  <div className="py-4 text-center">
-                    <p className="font-bold">{post.name}</p>
-                    <p className="text-underline text-sm text-blue-500">Read Article</p>
-                  </div>
-                </Link>
-              );
-            })} */}
-          </div>
-        </div>
-        <div className="bg-blue-50 mx-4 p-8 sm:p-12 lg:p-16 rounded-lg flex flex-col justify-center items-center">
-          <BsTagFill className="text-blue-500 text-4xl" />
-          <h3 className="text-4xl font-bold mt-4 mb-8 max-w-[600px] text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing
-          </h3>
-          <Button label="Sign in or Sign up" configuration="outlined" size="medium" modal={true} />
+    <div className="max-w-[1440px] w-[100%] min-h-[calc(100vh-60px)] flex items-center justify-center">
+      <div className="max-w-md w-full space-y-8">
+        <div>
+          <h2 className="text-center text-3xl font-extrabold">Analytics</h2>
         </div>
       </div>
     </div>

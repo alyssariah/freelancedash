@@ -19,7 +19,7 @@ export const Dialog = ({
 }: any) => {
   return (
     <div
-      className={`relative z-[1] block box-border mx-auto my-0 top-[50%] translate-y-[-50%] w-[320px] p-[16px] rounded-lg bg-[#fff] overflow-hidden box-shadow--${boxShadow}`}
+      className={`relative z-[1] block box-border mx-auto my-0 top-[50%] translate-y-[-50%] w-[320px] p-[16px] rounded-lg bg-white-500 dark:bg-black-500 overflow-hidden box-shadow--${boxShadow}`}
     >
       <label
         className="absolute top-0 right-0 w-[2rem] h-[2rem] leading-6 text-center cursor-pointer"
