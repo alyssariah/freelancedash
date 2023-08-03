@@ -7,8 +7,13 @@ import { Metadata } from 'next';
 import { Footer } from '@components/footer/Footer';
 import { NextAuthProvider } from '../provider';
 import Drawer from '@/components/drawer/Drawer';
-import { BsCalendar2Check, BsFileTextFill, BsPeopleFill, BsSpeedometer } from 'react-icons/bs';
-import { FaFileInvoiceDollar } from 'react-icons/fa';
+import {
+  BsCalendar2Check,
+  BsCurrencyDollar,
+  BsFileTextFill,
+  BsPeopleFill,
+  BsSpeedometer,
+} from 'react-icons/bs';
 
 export const metadata: Metadata = {
   title: {
@@ -97,7 +102,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       url: '/projects',
     },
     {
-      icon: <FaFileInvoiceDollar />,
+      icon: <BsCurrencyDollar />,
       label: 'Invoices',
       url: '/invoices',
     },
@@ -115,11 +120,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className="flex">
+      <body
+        suppressHydrationWarning={true}
+        className="flex dark:bg-black-500 dark:text-white-500 bg-white-500 text-black-500"
+      >
         <NextAuthProvider>
           <ManagedUIContext>
             <Drawer links={links} />
-            <main className="flex flex-col items-center w-[100%] dark:bg-black-500 dark:text-white-500 bg-white-500 text-black-500 relative overscroll-none">
+            <main className="flex flex-col items-center w-[100%] relative overscroll-none">
               <Navbar
                 links={links}
                 format="Center links"

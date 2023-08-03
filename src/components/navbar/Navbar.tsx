@@ -10,6 +10,7 @@ import { useUI } from '@/contexts/managed-ui';
 import { Button } from '../button/Button';
 import { signIn, signOut } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
+import { MdDirectionsRun } from 'react-icons/md';
 
 export interface NavbarProps {
   logo?: {
@@ -81,16 +82,30 @@ export default function Navbar({
           }
         )}
       >
-        <div className="flex justify-start items-center hover:cursor-pointer">
+        <div className="hidden md:flex justify-start items-center hover:cursor-pointer">
           <HamburgerMenu
             animationType={hamburger.animation ? hamburger.animation : 'middleArrow'}
             active={displayHamburger}
-            setActive={displayHamburger ? closeHamburger : openHamburger}
+            setActive={() => {
+              if (displayHamburger) {
+                closeHamburger();
+                localStorage.setItem('displayHamburger', 'false');
+              } else {
+                openHamburger();
+                localStorage.setItem('displayHamburger', 'true');
+              }
+            }}
           />
         </div>
+        <p className="text-xl flex md:hidden pl-4">
+          Freelance
+          <span>
+            <MdDirectionsRun className="text-blue-500 text-3xl" />
+          </span>
+        </p>
         <span
           className={clsx('flex items-center space-x-6 ml-6', {
-            ['w-[200px] justify-end']: format == 'Center links',
+            ['md:w-[200px] justify-end']: format == 'Center links',
           })}
         >
           {theme === 'dark' ? (

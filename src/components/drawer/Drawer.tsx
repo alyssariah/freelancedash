@@ -27,49 +27,78 @@ export default function Drawer({ links }: DrawerProps) {
   useEffect(() => {}, [links]);
 
   return (
-    <div
-      className={clsx(
-        'min-h-[100vh] h-[100%] z-[10] w-[100%] bg-white-500 text-black-500 border-r-black-50 dark:bg-black-500 dark:text-white-500 border-r-[1px] dark:border-r-black-400 py-4 flex flex-col items-center transition-width ease-in duration-200 overflow-hidden',
-        {
-          ['w-[100%] md:w-[320px] absolute top-[60px] md:sticky md:top-0']: displayHamburger,
-          ['w-[0px] md:w-[60px] sticky top-0']: !displayHamburger,
-        }
-      )}
-    >
-      <div className="flex space-x-2 w-[100%] px-4">
-        {displayHamburger && (
-          <p className="text-xl">
-            Freelance<span className="text-blue-500">Dash</span>
-          </p>
+    <>
+      <div
+        className={clsx(
+          'hidden md:flex min-h-[100vh] h-[100%] z-[10] w-[100%] border-r-black-50 border-r-[1px] dark:border-r-black-400 py-4 flex-col items-center overflow-hidden',
+          {
+            ['w-[320px] sticky top-0']: displayHamburger,
+            ['w-[60px] sticky top-0']: !displayHamburger,
+          }
         )}
-        <MdDirectionsRun className="text-blue-500 text-3xl" />
-      </div>
-      <ul className="flex flex-col items-center pt-8 space-y-1 w-[100%]">
-        {links.map((link, i) => {
-          return (
-            <li key={i} className="text-sm flex flex-col w-[100%] h-[50px]">
-              <Link
-                href={link.url}
-                className={clsx('w-[100%] flex items-center h-[100%]', {
-                  ['justify-center']: !displayHamburger,
-                  ['px-4']: displayHamburger,
-                })}
-              >
-                <div
-                  className={clsx('flex items-center', {
-                    ['bg-blue-50 text-blue-900']: link.url === pathname,
-                    ['py-2 pl-4 pr-12 rounded-3xl']: displayHamburger,
-                    ['p-[9px] text-[16px] rounded-lg']: !displayHamburger,
+      >
+        <div className="flex space-x-2 w-[100%] px-4">
+          {displayHamburger && (
+            <p className="text-xl">
+              Freelance<span className="text-blue-500">Dash</span>
+            </p>
+          )}
+          <MdDirectionsRun className="text-blue-500 text-3xl" />
+        </div>
+        <ul className="flex flex-col items-center pt-8 space-y-1 w-[100%]">
+          {links.map((link, i) => {
+            return (
+              <li key={i} className="text-sm flex flex-col w-[100%] h-[50px]">
+                <Link
+                  href={link.url}
+                  className={clsx('w-[100%] flex items-center h-[100%]', {
+                    ['justify-center']: !displayHamburger,
+                    ['px-4']: displayHamburger,
                   })}
                 >
-                  {link.icon}
-                  {displayHamburger && <span className="pl-3">{link.label}</span>}
-                </div>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+                  <div
+                    className={clsx('flex items-center', {
+                      ['bg-blue-50 text-blue-900']: link.url === pathname,
+                      ['py-2 pl-4 pr-12 rounded-3xl']: displayHamburger,
+                      ['p-[9px] text-[16px] rounded-lg']: !displayHamburger,
+                    })}
+                  >
+                    {link.icon}
+                    {displayHamburger && <span className="pl-3">{link.label}</span>}
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div className="md:hidden fixed bottom-0 left-0 w-[100%] z-[20] bg-white-100 dark:bg-black-500 shadow-4">
+        <ul className="flex items-center justify-between w-[100%]">
+          {links.map((link, i) => {
+            return (
+              <li
+                key={i}
+                className="flex flex-col items-center justify-center w-[100%] h-[100%] flex-grow-1"
+              >
+                <Link
+                  href={link.url}
+                  className={clsx('w-[100%] flex items-center justify-center h-[100%] py-1')}
+                >
+                  <div
+                    className={clsx('flex flex-col items-center text-lg p-2 rounded-lg', {
+                      ['text-blue-300']: link.url === pathname,
+                      ['text-black-500 dark:text-white-500']: link.url !== pathname,
+                    })}
+                  >
+                    {link.icon}
+                    <span className="text-[8px] font-thin pt-2">{link.label}</span>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 }

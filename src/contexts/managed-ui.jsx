@@ -1,11 +1,16 @@
 'use client';
 import React, { useCallback, useMemo } from 'react';
 // import { ThemeProvider } from 'next-themes'
+const displayHamburgerStorage = localStorage.getItem('displayHamburger');
 
 const initialState = {
   displaySidebar: false,
   displayModal: false,
-  displayHamburger: true,
+  displayHamburger: displayHamburgerStorage
+    ? displayHamburgerStorage === 'true'
+      ? true
+      : false
+    : true,
   modalView: 'DEFAULT',
   sidebarView: 'DEFAULT',
   setModalView: (value) => {
